@@ -49,4 +49,255 @@ function expirySortKey(expiryStr){
 // data/daily-levels.json's behavior doesn't change.
 function pickNearestExpiry(uniqueExpiries){
   const sorted = [...uniqueExpiries].sort((a, b) => expirySortKey(a) - expirySortKey(b));
-  if(!sorted.length) throw new Error('No active BTC option
+  if(!sorted.length) throw new Error('No active BTC option expiries found');
+  return sorted[0];
+}
+
+function aggregateOI(summary, expiry){
+  const byStrike = {};
+  for(const row of summary){
+    const parsed = parseInstrument(row.instrument_name);
+    if(!parsed || parsed.expiry !== expiry) continue;
+    if(!byStrike[parsed.strike]) byStrike[parsed.strike] = { call: 0, put: 0 };
+    byStrike[parsed.strike][parsed.type] += (row.open_interest || 0);
+  }
+  return byStrike;
+}
+
+// ---------------- Expiry classification (daily / weekly / monthly / quarterly) ----------------
+// Mirrors Deribit's own published contract schedule:
+//   "Daily options expire every day at 08:00 UTC. Weekly options expire on
+//    each Friday... Monthly options expire on the last Friday of each
+//    calendar month... Quarterly options expire on the last Friday of each
+//    calendar quarter." — so classification is a pure date-arithmetic
+// property of the expiry date itself, not a guess.
+
+const MONTHS = { JAN:0, FEB:1, MAR:2, APR:3, MAY:4, JUN:5, JUL:6, AUG:7, SEP:8, OCT:9, NOV:10, DEC:11 };
+
+// Parses a Deribit expiry string like "13SEP26" into a UTC midnight
+// timestamp (ms) for that calendar date. Explicit UTC math (no reliance on
+// the runner's local timezone or the native Date string parser).
+function parseExpiryDateUTC(expiryStr){
+  const m = expiryStr.match(/^(\d{1,2})([A-Z]{3})(\d{2})$/);
+  if(!m) return null;
+  const [, dd, mon, yy] = m;
+  const month = MONTHS[mon];
+  if(month === undefined) return null;
+  return Date.UTC(2000 + parseInt(yy, 10), month, parseInt(dd, 10));
+}
+
+// Last Friday of the given UTC month, as a UTC-midnight ms timestamp.
+// monthIndex0 may be passed outside 0-11 — Date.UTC normalizes it (e.g.
+// month -1 correctly rolls back into December of the previous year).
+function lastFridayUTC(year, monthIndex0){
+  let t = Date.UTC(year, monthIndex0 + 1, 1) - 86400000; // last day of that month, 00:00 UTC
+  while(new Date(t).getUTCDay() !== 5) t -= 86400000;    // walk back to the nearest Friday
+  return t;
+}
+
+function classifyExpiry(dateMs){
+  const d = new Date(dateMs);
+  if(d.getUTCDay() !== 5) return 'daily'; // not a Friday => daily
+  const isLastFridayOfMonth = dateMs === lastFridayUTC(d.getUTCFullYear(), d.getUTCMonth());
+  if(!isLastFridayOfMonth) return 'weekly';
+  const isQuarterEndMonth = [2, 5, 8, 11].includes(d.getUTCMonth()); // Mar/Jun/Sep/Dec
+  return isQuarterEndMonth ? 'quarterly' : 'monthly';
+}
+
+// Nearest active expiry classified as `timeframe`, or null if none is
+// currently listed (can happen momentarily right at a rollover).
+function pickNearestByTimeframe(uniqueExpiries, timeframe){
+  const candidates = uniqueExpiries
+    .map(expiry => ({ expiry, ms: parseExpiryDateUTC(expiry) }))
+    .filter(e => e.ms !== null)
+    .map(e => ({ ...e, type: classifyExpiry(e.ms) }))
+    .filter(e => e.type === timeframe)
+    .sort((a, b) => a.ms - b.ms);
+  return candidates.length ? candidates[0] : null;
+}
+
+// The period a given timeframe's currently-tracked expiry covers: from the
+// previous same-timeframe settlement up to this one's 08:00 UTC settlement.
+// Daily/weekly periods are fixed-length (24h / 7d apart by definition);
+// monthly/quarterly need real calendar math since month lengths vary.
+function periodBoundsForExpiry(timeframe, expiryDateMs){
+  const settleTs = expiryDateMs / 1000 + EXPIRY_HOUR_UTC * 3600;
+  let startTs;
+  if(timeframe === 'daily'){
+    startTs = settleTs - 86400;
+  }else if(timeframe === 'weekly'){
+    startTs = settleTs - 7 * 86400;
+  }else{
+    const d = new Date(expiryDateMs);
+    const monthsBack = timeframe === 'monthly' ? 1 : 3; // quarterly
+    const prevFridayMs = lastFridayUTC(d.getUTCFullYear(), d.getUTCMonth() - monthsBack);
+    startTs = prevFridayMs / 1000 + EXPIRY_HOUR_UTC * 3600;
+  }
+  return { dayStart: startTs, dayEnd: settleTs };
+}
+
+// ---------------- Level computation (mirrors index.html) ----------------
+
+function statThreshold(values){
+  if(values.length < 2) return Infinity;
+  const mean = values.reduce((a, b) => a + b, 0) / values.length;
+  const variance = values.reduce((a, b) => a + (b - mean) ** 2, 0) / values.length;
+  return mean + Math.sqrt(variance);
+}
+
+function buildSide(pool, sideName, prefix, dominanceOk){
+  const sorted = [...pool].sort((a, b) => b.metric - a.metric);
+  const primary = sorted.slice(0, LEVELS_PER_SIDE);
+  const threshold = statThreshold(sorted.map(t => t.metric));
+  const extra = sorted.slice(LEVELS_PER_SIDE)
+    .filter(t => t.metric >= threshold && dominanceOk(t))
+    .slice(0, EXTRA_LEVELS_PER_SIDE);
+  primary.forEach((t, i) => { t.side = sideName; t.label = prefix + (i + 1); t.rank = i; t.extra = false; });
+  extra.forEach((t, i) => { t.side = sideName; t.label = prefix + (LEVELS_PER_SIDE + i + 1); t.rank = LEVELS_PER_SIDE + i; t.extra = true; });
+  return [...primary, ...extra];
+}
+
+// Computes both S/R modes (combined + individual) so the dashboard can
+// switch between them for historical periods, same as it does live.
+function computeLevels(oiByStrike){
+  const strikes = Object.keys(oiByStrike).map(Number).sort((a, b) => a - b);
+  if(!strikes.length) return null;
+
+  const withTotals = strikes.map(k => {
+    const { call, put } = oiByStrike[k];
+    return { strike: k, call, put, total: call + put };
+  });
+
+  function forMode(mode){
+    let resistanceCandidates, supportCandidates;
+    if(mode === 'individual'){
+      const resistancePool = withTotals.filter(t => t.call > 0).map(t => ({ ...t, metric: t.call, total: t.call }));
+      const supportPool = withTotals.filter(t => t.put > 0).map(t => ({ ...t, metric: t.put, total: t.put }));
+      resistanceCandidates = buildSide(resistancePool, 'resistance', 'R', () => true);
+      supportCandidates = buildSide(supportPool, 'support', 'S', () => true);
+    }else{
+      const resistancePool = withTotals.filter(t => t.call >= t.put).map(t => ({ ...t, metric: t.total }));
+      const supportPool = withTotals.filter(t => t.put > t.call).map(t => ({ ...t, metric: t.total }));
+      resistanceCandidates = buildSide(resistancePool, 'resistance', 'R', t => t.call >= t.put * EXTRA_DOMINANCE_MARGIN);
+      supportCandidates = buildSide(supportPool, 'support', 'S', t => t.put >= t.call * EXTRA_DOMINANCE_MARGIN);
+    }
+    return [...resistanceCandidates, ...supportCandidates].sort((a, b) => a.strike - b.strike)
+      .map(l => ({ strike: l.strike, side: l.side, label: l.label, total: l.total, extra: !!l.extra, rank: l.rank || 0 }));
+  }
+
+  let best = null, bestLoss = Infinity;
+  for(const k of strikes){
+    let loss = 0;
+    for(const s of withTotals){
+      loss += s.call * Math.max(0, k - s.strike);
+      loss += s.put * Math.max(0, s.strike - k);
+    }
+    if(loss < bestLoss){ bestLoss = loss; best = k; }
+  }
+
+  return {
+    maxPain: best,
+    combined: forMode('combined'),
+    individual: forMode('individual'),
+  };
+}
+
+// ---------------- Legacy daily bucketing (mirrors index.html's dayKeyUTC) ----------------
+
+function dayKeyUTC(tsSec){
+  const shifted = tsSec - EXPIRY_HOUR_UTC * 3600;
+  return new Date(shifted * 1000).toISOString().slice(0, 10);
+}
+function dayStartUTC(key){
+  return Math.floor(Date.parse(key + 'T00:00:00Z') / 1000) + EXPIRY_HOUR_UTC * 3600;
+}
+
+function readJSON(file, fallback){
+  try{ return JSON.parse(fs.readFileSync(file, 'utf8')); }
+  catch(e){ return fallback; }
+}
+function writeJSON(file, data){
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
+}
+
+// ---------------- Main ----------------
+
+async function main(){
+  const instruments = await fetchJSON(`${DERIBIT}/public/get_instruments?currency=BTC&kind=option&expired=false`);
+  const uniqueExpiries = [...new Set(instruments.map(i => i.instrument_name.split('-')[1]))];
+  const summary = await fetchJSON(`${DERIBIT}/public/get_book_summary_by_currency?currency=BTC&kind=option`);
+
+  // ---- Legacy: data/daily-levels.json (unchanged behavior) ----
+  const nearestOverall = pickNearestExpiry(uniqueExpiries);
+  const legacyComputed = computeLevels(aggregateOI(summary, nearestOverall));
+  if(legacyComputed){
+    const now = Math.floor(Date.now() / 1000);
+    const key = dayKeyUTC(now);
+    const dailyStore = readJSON(DAILY_FILE, {});
+    dailyStore[key] = {
+      dayStart: dayStartUTC(key),
+      expiry: nearestOverall,
+      maxPain: legacyComputed.maxPain,
+      combined: legacyComputed.combined,
+      individual: legacyComputed.individual,
+      updatedAt: new Date().toISOString(),
+    };
+    writeJSON(DAILY_FILE, dailyStore);
+    console.log(`[legacy daily-levels.json] Saved period ${key} (expiry ${nearestOverall}): maxPain=${legacyComputed.maxPain}`);
+  }else{
+    console.log(`[legacy daily-levels.json] No OI data for ${nearestOverall} — skipping.`);
+  }
+
+  // ---- New: data/levels.json, one history per timeframe ----
+  let levelsStore = readJSON(LEVELS_FILE, null);
+  if(levelsStore === null){
+    // First run under the new format: seed `daily` from the existing legacy
+    // file (if any) so we don't throw away the history already collected,
+    // rather than starting the daily timeframe over from empty.
+    levelsStore = { daily: {}, weekly: {}, monthly: {}, quarterly: {} };
+    const legacyDaily = readJSON(DAILY_FILE, {});
+    for(const [key, entry] of Object.entries(legacyDaily)){
+      levelsStore.daily[key] = { ...entry, dayEnd: entry.dayStart + 86400 };
+    }
+  }
+  for(const tf of TIMEFRAMES){
+    if(!levelsStore[tf]) levelsStore[tf] = {};
+  }
+
+  for(const timeframe of TIMEFRAMES){
+    const nearest = pickNearestByTimeframe(uniqueExpiries, timeframe);
+    if(!nearest){
+      console.log(`[levels.json:${timeframe}] No active ${timeframe} expiry currently listed — skipping this run.`);
+      continue;
+    }
+    const computed = computeLevels(aggregateOI(summary, nearest.expiry));
+    if(!computed){
+      console.log(`[levels.json:${timeframe}] No OI data for ${nearest.expiry} — skipping.`);
+      continue;
+    }
+    const { dayStart, dayEnd } = periodBoundsForExpiry(timeframe, nearest.ms);
+    // For `daily`, use the same YYYY-MM-DD key format as the legacy file
+    // (so migrated + newly-written entries stay consistent and sort
+    // correctly together). Weekly/monthly/quarterly periods aren't
+    // calendar-day-aligned, so the expiry string is the natural unique key.
+    const key = timeframe === 'daily' ? dayKeyUTC(Math.floor(Date.now() / 1000)) : nearest.expiry;
+    levelsStore[timeframe][key] = {
+      dayStart,
+      dayEnd,
+      expiry: nearest.expiry,
+      maxPain: computed.maxPain,
+      combined: computed.combined,
+      individual: computed.individual,
+      updatedAt: new Date().toISOString(),
+    };
+    console.log(`[levels.json:${timeframe}] Saved period ${key} (expiry ${nearest.expiry}): maxPain=${computed.maxPain}, ${computed.combined.length} combined levels, ${computed.individual.length} individual levels.`);
+  }
+
+  writeJSON(LEVELS_FILE, levelsStore);
+}
+
+main().catch(err => {
+  console.error('Collector failed:', err);
+  process.exit(1);
+});
