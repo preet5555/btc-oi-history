@@ -2,11 +2,13 @@ name: Collect BTC OI levels
 
 on:
   schedule:
+    # Every 15 minutes. GitHub may delay this somewhat under load, especially
+    # on the free tier — treat it as "roughly every 15-30 min", not exact.
     - cron: '*/15 * * * *'
-  workflow_dispatch: {}
+  workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
 
 permissions:
-  contents: write
+  contents: write   # required so the job can commit data/*.json back
 
 jobs:
   collect:
@@ -25,7 +27,7 @@ jobs:
         run: |
           git config user.name "oi-collector-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/daily-levels.json
+          git add data/daily-levels.json data/levels.json
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "Update OI levels [skip ci]"
           git push
