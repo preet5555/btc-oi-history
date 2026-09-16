@@ -118,21 +118,27 @@ function pickNearestByTimeframe(uniqueExpiries, timeframe){
 
 // The period a given timeframe's currently-tracked expiry covers: from the
 // previous same-timeframe settlement up to this one's 08:00 UTC settlement.
-// Daily/weekly periods are fixed-length (24h / 7d apart by definition);
-// monthly/quarterly need real calendar math since month lengths vary.
+//
+// This can't just be "N days/weeks/months back" — e.g. the calendar month
+// right before a monthly expiry might itself have been a QUARTERLY month
+// (its last Friday claimed by the quarterly classification instead), in
+// which case the true previous monthly boundary is further back still. The
+// same subtlety applies to weekly (the immediately-prior Friday might be a
+// monthly/quarterly one) and even daily (the day before might be a Friday,
+// which is never daily-classified). So: walk backward one natural step at a
+// time (1 day for daily, 7 days — i.e. one Friday — for the rest) until
+// landing on an expiry date that's actually classified as this SAME
+// timeframe; that's the genuine previous boundary.
 function periodBoundsForExpiry(timeframe, expiryDateMs){
   const settleTs = expiryDateMs / 1000 + EXPIRY_HOUR_UTC * 3600;
-  let startTs;
-  if(timeframe === 'daily'){
-    startTs = settleTs - 86400;
-  }else if(timeframe === 'weekly'){
-    startTs = settleTs - 7 * 86400;
-  }else{
-    const d = new Date(expiryDateMs);
-    const monthsBack = timeframe === 'monthly' ? 1 : 3; // quarterly
-    const prevFridayMs = lastFridayUTC(d.getUTCFullYear(), d.getUTCMonth() - monthsBack);
-    startTs = prevFridayMs / 1000 + EXPIRY_HOUR_UTC * 3600;
+  const stepMs = timeframe === 'daily' ? 86400000 : 7 * 86400000;
+  let prev = expiryDateMs - stepMs;
+  let guard = 0;
+  while(classifyExpiry(prev) !== timeframe && guard < 60){
+    prev -= stepMs;
+    guard++;
   }
+  const startTs = prev / 1000 + EXPIRY_HOUR_UTC * 3600;
   return { dayStart: startTs, dayEnd: settleTs };
 }
 
