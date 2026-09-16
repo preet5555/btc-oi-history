@@ -17,9 +17,16 @@ const DERIBIT = 'https://www.deribit.com/api/v2';
 const DAILY_FILE = path.join(__dirname, '..', 'data', 'daily-levels.json');   // legacy, single-timeframe file (kept for backward compatibility)
 const LEVELS_FILE = path.join(__dirname, '..', 'data', 'levels.json');        // new, multi-timeframe file: { daily: {...}, weekly: {...}, monthly: {...}, quarterly: {...} }
 
-const LEVELS_PER_SIDE = 3;
-const EXTRA_LEVELS_PER_SIDE = 2;
-const EXTRA_DOMINANCE_MARGIN = 1.15;
+// Levels are now a manual per-side count, chosen live in the dashboard
+// (0-10, via the "S/R levels (per side)" dropdown) rather than a fixed
+// count gated by a statistical threshold. Since the dropdown can ask for
+// up to 10 per side, we store the full top-10-per-side ranking here for
+// every period — the dashboard then just slices however many it wants to
+// display for both live and historical periods. Ranks 1-3 (rank index
+// 0-2) are meant to be drawn solid; ranks 4-10 (index 3-9) dotted — same
+// split as index.html's LEVELS_PER_SIDE.
+const MAX_LEVELS_PER_SIDE = 10;
+const LEVELS_PER_SIDE = 3;   // ranks below this are "solid"; the rest are "extra" (dotted)
 const EXPIRY_HOUR_UTC = 8; // Deribit's daily option settlement time
 const TIMEFRAMES = ['daily', 'weekly', 'monthly', 'quarterly'];
 
@@ -143,24 +150,17 @@ function periodBoundsForExpiry(timeframe, expiryDateMs){
 }
 
 // ---------------- Level computation (mirrors index.html) ----------------
+// No statistical/dominance gating anymore — the dashboard's dropdown lets
+// the user manually choose how many levels per side to display (0-10), so
+// we simply rank every candidate strike by OI and store the top
+// MAX_LEVELS_PER_SIDE per side. Rank index 0-2 ("1st"-"3rd") is meant to
+// render solid; index 3-9 ("4th"-"10th") dotted.
 
-function statThreshold(values){
-  if(values.length < 2) return Infinity;
-  const mean = values.reduce((a, b) => a + b, 0) / values.length;
-  const variance = values.reduce((a, b) => a + (b - mean) ** 2, 0) / values.length;
-  return mean + Math.sqrt(variance);
-}
-
-function buildSide(pool, sideName, prefix, dominanceOk){
+function buildSide(pool, sideName, prefix){
   const sorted = [...pool].sort((a, b) => b.metric - a.metric);
-  const primary = sorted.slice(0, LEVELS_PER_SIDE);
-  const threshold = statThreshold(sorted.map(t => t.metric));
-  const extra = sorted.slice(LEVELS_PER_SIDE)
-    .filter(t => t.metric >= threshold && dominanceOk(t))
-    .slice(0, EXTRA_LEVELS_PER_SIDE);
-  primary.forEach((t, i) => { t.side = sideName; t.label = prefix + (i + 1); t.rank = i; t.extra = false; });
-  extra.forEach((t, i) => { t.side = sideName; t.label = prefix + (LEVELS_PER_SIDE + i + 1); t.rank = LEVELS_PER_SIDE + i; t.extra = true; });
-  return [...primary, ...extra];
+  const selected = sorted.slice(0, MAX_LEVELS_PER_SIDE);
+  selected.forEach((t, i) => { t.side = sideName; t.label = prefix + (i + 1); t.rank = i; t.extra = i >= LEVELS_PER_SIDE; });
+  return selected;
 }
 
 // Computes both S/R modes (combined + individual) so the dashboard can
@@ -177,15 +177,19 @@ function computeLevels(oiByStrike){
   function forMode(mode){
     let resistanceCandidates, supportCandidates;
     if(mode === 'individual'){
+      // Resistance driven purely by call OI, support purely by put OI.
       const resistancePool = withTotals.filter(t => t.call > 0).map(t => ({ ...t, metric: t.call, total: t.call }));
       const supportPool = withTotals.filter(t => t.put > 0).map(t => ({ ...t, metric: t.put, total: t.put }));
-      resistanceCandidates = buildSide(resistancePool, 'resistance', 'R', () => true);
-      supportCandidates = buildSide(supportPool, 'support', 'S', () => true);
+      resistanceCandidates = buildSide(resistancePool, 'resistance', 'R');
+      supportCandidates = buildSide(supportPool, 'support', 'S');
     }else{
+      // Combined mode: a strike counts toward resistance if call>=put OI
+      // there (or support if put>call), then the top MAX_LEVELS_PER_SIDE
+      // per side by total OI are ranked 1..MAX_LEVELS_PER_SIDE.
       const resistancePool = withTotals.filter(t => t.call >= t.put).map(t => ({ ...t, metric: t.total }));
       const supportPool = withTotals.filter(t => t.put > t.call).map(t => ({ ...t, metric: t.total }));
-      resistanceCandidates = buildSide(resistancePool, 'resistance', 'R', t => t.call >= t.put * EXTRA_DOMINANCE_MARGIN);
-      supportCandidates = buildSide(supportPool, 'support', 'S', t => t.put >= t.call * EXTRA_DOMINANCE_MARGIN);
+      resistanceCandidates = buildSide(resistancePool, 'resistance', 'R');
+      supportCandidates = buildSide(supportPool, 'support', 'S');
     }
     return [...resistanceCandidates, ...supportCandidates].sort((a, b) => a.strike - b.strike)
       .map(l => ({ strike: l.strike, side: l.side, label: l.label, total: l.total, extra: !!l.extra, rank: l.rank || 0 }));
