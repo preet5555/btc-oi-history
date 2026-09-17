@@ -896,7 +896,7 @@
         "strike": 72000,
         "side": "support",
         "label": "S2",
-        "total": 1941.7,
+        "total": 1879.3,
         "extra": false,
         "rank": 1
       },
@@ -904,7 +904,7 @@
         "strike": 74000,
         "side": "support",
         "label": "S1",
-        "total": 3147.6000000000004,
+        "total": 3101.7000000000003,
         "extra": false,
         "rank": 0
       },
@@ -912,7 +912,7 @@
         "strike": 75000,
         "side": "support",
         "label": "S3",
-        "total": 1142.5,
+        "total": 1103.9,
         "extra": false,
         "rank": 2
       },
@@ -920,7 +920,7 @@
         "strike": 79000,
         "side": "resistance",
         "label": "R1",
-        "total": 2130.7999999999997,
+        "total": 2122.7,
         "extra": false,
         "rank": 0
       },
@@ -928,7 +928,7 @@
         "strike": 81000,
         "side": "resistance",
         "label": "R3",
-        "total": 1519.8,
+        "total": 1521.8,
         "extra": false,
         "rank": 2
       },
@@ -946,7 +946,7 @@
         "strike": 72000,
         "side": "support",
         "label": "S2",
-        "total": 1941.4,
+        "total": 1879,
         "extra": false,
         "rank": 1
       },
@@ -954,7 +954,7 @@
         "strike": 74000,
         "side": "support",
         "label": "S1",
-        "total": 3122.3,
+        "total": 3076.4,
         "extra": false,
         "rank": 0
       },
@@ -962,7 +962,7 @@
         "strike": 75000,
         "side": "support",
         "label": "S3",
-        "total": 1071.8,
+        "total": 1033.2,
         "extra": false,
         "rank": 2
       },
@@ -970,7 +970,7 @@
         "strike": 79000,
         "side": "resistance",
         "label": "R1",
-        "total": 1857.6,
+        "total": 1849.5,
         "extra": false,
         "rank": 0
       },
@@ -978,7 +978,7 @@
         "strike": 81000,
         "side": "resistance",
         "label": "R3",
-        "total": 1490.7,
+        "total": 1492.7,
         "extra": false,
         "rank": 2
       },
@@ -999,6 +999,6 @@
         "rank": 3
       }
     ],
-    "updatedAt": "2026-09-17T11:36:50.646Z"
+    "updatedAt": "2026-09-17T14:25:37.404Z"
   }
 }
