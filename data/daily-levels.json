@@ -2702,7 +2702,7 @@
         "strike": 83000,
         "side": "support",
         "label": "S3",
-        "total": 294.7,
+        "total": 295.2,
         "extra": false,
         "rank": 2
       },
@@ -2710,7 +2710,7 @@
         "strike": 84000,
         "side": "support",
         "label": "S2",
-        "total": 480.3,
+        "total": 368.5,
         "extra": false,
         "rank": 1
       },
@@ -2718,7 +2718,7 @@
         "strike": 84500,
         "side": "resistance",
         "label": "R2",
-        "total": 266.2,
+        "total": 271.1,
         "extra": false,
         "rank": 1
       },
@@ -2726,15 +2726,15 @@
         "strike": 85000,
         "side": "resistance",
         "label": "R1",
-        "total": 836.9000000000001,
+        "total": 833.7,
         "extra": false,
         "rank": 0
       },
       {
-        "strike": 86500,
+        "strike": 86000,
         "side": "resistance",
         "label": "R3",
-        "total": 245,
+        "total": 245.3,
         "extra": false,
         "rank": 2
       }
@@ -2751,24 +2751,24 @@
       {
         "strike": 83000,
         "side": "support",
-        "label": "S3",
-        "total": 294.2,
+        "label": "S2",
+        "total": 294.7,
         "extra": false,
-        "rank": 2
+        "rank": 1
       },
       {
         "strike": 84000,
         "side": "support",
-        "label": "S2",
-        "total": 354.1,
+        "label": "S3",
+        "total": 252.2,
         "extra": false,
-        "rank": 1
+        "rank": 2
       },
       {
         "strike": 85000,
         "side": "resistance",
         "label": "R1",
-        "total": 597.2,
+        "total": 601.5,
         "extra": false,
         "rank": 0
       },
@@ -2776,7 +2776,7 @@
         "strike": 86000,
         "side": "resistance",
         "label": "R2",
-        "total": 196.1,
+        "total": 196.6,
         "extra": false,
         "rank": 1
       },
@@ -2784,11 +2784,11 @@
         "strike": 88000,
         "side": "resistance",
         "label": "R3",
-        "total": 166.4,
+        "total": 166.1,
         "extra": false,
         "rank": 2
       }
     ],
-    "updatedAt": "2026-10-02T19:57:40.610Z"
+    "updatedAt": "2026-10-02T23:41:53.883Z"
   }
 }
