@@ -3370,7 +3370,7 @@
         "strike": 80000,
         "side": "support",
         "label": "S2",
-        "total": 1445.3999999999999,
+        "total": 1409.8,
         "extra": false,
         "rank": 1
       },
@@ -3378,7 +3378,7 @@
         "strike": 81000,
         "side": "support",
         "label": "S4",
-        "total": 1300.8,
+        "total": 1200.8,
         "extra": true,
         "rank": 3
       },
@@ -3436,7 +3436,7 @@
         "strike": 80000,
         "side": "support",
         "label": "S3",
-        "total": 1025.1,
+        "total": 989.5,
         "extra": false,
         "rank": 2
       },
@@ -3444,7 +3444,7 @@
         "strike": 81000,
         "side": "support",
         "label": "S2",
-        "total": 1112.7,
+        "total": 1012.7,
         "extra": false,
         "rank": 1
       },
@@ -3489,6 +3489,6 @@
         "rank": 2
       }
     ],
-    "updatedAt": "2026-10-08T19:28:04.273Z"
+    "updatedAt": "2026-10-08T23:53:33.559Z"
   }
 }
