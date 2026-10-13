@@ -3836,13 +3836,13 @@
   "2026-10-12": {
     "dayStart": 1791792000,
     "expiry": "13OCT26",
-    "maxPain": 83500,
+    "maxPain": 83000,
     "combined": [
       {
         "strike": 81000,
         "side": "support",
         "label": "S3",
-        "total": 98.8,
+        "total": 117.9,
         "extra": false,
         "rank": 2
       },
@@ -3850,7 +3850,7 @@
         "strike": 82500,
         "side": "support",
         "label": "S1",
-        "total": 221.20000000000002,
+        "total": 232.9,
         "extra": false,
         "rank": 0
       },
@@ -3858,7 +3858,7 @@
         "strike": 83000,
         "side": "support",
         "label": "S2",
-        "total": 200.79999999999998,
+        "total": 226.89999999999998,
         "extra": false,
         "rank": 1
       },
@@ -3866,7 +3866,7 @@
         "strike": 84000,
         "side": "resistance",
         "label": "R1",
-        "total": 147.3,
+        "total": 181.1,
         "extra": false,
         "rank": 0
       },
@@ -3892,7 +3892,7 @@
         "strike": 81000,
         "side": "support",
         "label": "S3",
-        "total": 98.8,
+        "total": 117.9,
         "extra": false,
         "rank": 2
       },
@@ -3900,9 +3900,17 @@
         "strike": 82500,
         "side": "support",
         "label": "S1",
-        "total": 214.8,
+        "total": 217.8,
         "extra": false,
         "rank": 0
+      },
+      {
+        "strike": 83000,
+        "side": "resistance",
+        "label": "R4",
+        "total": 96.2,
+        "extra": true,
+        "rank": 3
       },
       {
         "strike": 83000,
@@ -3915,10 +3923,10 @@
       {
         "strike": 84000,
         "side": "resistance",
-        "label": "R3",
-        "total": 88.2,
+        "label": "R2",
+        "total": 122,
         "extra": false,
-        "rank": 2
+        "rank": 1
       },
       {
         "strike": 85000,
@@ -3931,12 +3939,12 @@
       {
         "strike": 85500,
         "side": "resistance",
-        "label": "R2",
+        "label": "R3",
         "total": 121.3,
         "extra": false,
-        "rank": 1
+        "rank": 2
       }
     ],
-    "updatedAt": "2026-10-12T18:43:42.583Z"
+    "updatedAt": "2026-10-13T00:59:46.635Z"
   }
 }
