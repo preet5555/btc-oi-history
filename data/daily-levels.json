@@ -3956,7 +3956,7 @@
         "strike": 81500,
         "side": "support",
         "label": "S1",
-        "total": 184.7,
+        "total": 185.2,
         "extra": false,
         "rank": 0
       },
@@ -3964,7 +3964,7 @@
         "strike": 82500,
         "side": "support",
         "label": "S3",
-        "total": 136.9,
+        "total": 136.5,
         "extra": false,
         "rank": 2
       },
@@ -3972,7 +3972,7 @@
         "strike": 83000,
         "side": "support",
         "label": "S2",
-        "total": 145.6,
+        "total": 150.1,
         "extra": false,
         "rank": 1
       },
@@ -3980,7 +3980,7 @@
         "strike": 84000,
         "side": "resistance",
         "label": "R1",
-        "total": 215.7,
+        "total": 228.4,
         "extra": false,
         "rank": 0
       },
@@ -4003,26 +4003,26 @@
     ],
     "individual": [
       {
+        "strike": 81000,
+        "side": "support",
+        "label": "S3",
+        "total": 88.1,
+        "extra": false,
+        "rank": 2
+      },
+      {
         "strike": 81500,
         "side": "support",
         "label": "S1",
-        "total": 182.5,
+        "total": 183,
         "extra": false,
         "rank": 0
-      },
-      {
-        "strike": 82500,
-        "side": "support",
-        "label": "S3",
-        "total": 87.3,
-        "extra": false,
-        "rank": 2
       },
       {
         "strike": 83000,
         "side": "support",
         "label": "S2",
-        "total": 130.1,
+        "total": 134.1,
         "extra": false,
         "rank": 1
       },
@@ -4030,7 +4030,7 @@
         "strike": 84000,
         "side": "resistance",
         "label": "R1",
-        "total": 205.1,
+        "total": 217.8,
         "extra": false,
         "rank": 0
       },
@@ -4051,6 +4051,6 @@
         "rank": 1
       }
     ],
-    "updatedAt": "2026-10-13T20:47:16.221Z"
+    "updatedAt": "2026-10-14T00:11:20.393Z"
   }
 }
