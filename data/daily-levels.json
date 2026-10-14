@@ -4056,13 +4056,13 @@
   "2026-10-14": {
     "dayStart": 1791964800,
     "expiry": "15OCT26",
-    "maxPain": 83000,
+    "maxPain": 83500,
     "combined": [
       {
-        "strike": 78000,
+        "strike": 81000,
         "side": "support",
         "label": "S3",
-        "total": 176.3,
+        "total": 208.79999999999998,
         "extra": false,
         "rank": 2
       },
@@ -4070,7 +4070,7 @@
         "strike": 81500,
         "side": "support",
         "label": "S1",
-        "total": 407.29999999999995,
+        "total": 399,
         "extra": false,
         "rank": 0
       },
@@ -4078,7 +4078,7 @@
         "strike": 83000,
         "side": "support",
         "label": "S2",
-        "total": 233.8,
+        "total": 233.79999999999998,
         "extra": false,
         "rank": 1
       },
@@ -4086,7 +4086,7 @@
         "strike": 83500,
         "side": "resistance",
         "label": "R4",
-        "total": 164.8,
+        "total": 167.10000000000002,
         "extra": true,
         "rank": 3
       },
@@ -4117,10 +4117,10 @@
     ],
     "individual": [
       {
-        "strike": 78000,
+        "strike": 81000,
         "side": "support",
         "label": "S3",
-        "total": 176.3,
+        "total": 208.2,
         "extra": false,
         "rank": 2
       },
@@ -4128,7 +4128,7 @@
         "strike": 81500,
         "side": "support",
         "label": "S1",
-        "total": 390.4,
+        "total": 387.2,
         "extra": false,
         "rank": 0
       },
@@ -4136,7 +4136,7 @@
         "strike": 83000,
         "side": "support",
         "label": "S2",
-        "total": 212.8,
+        "total": 212.7,
         "extra": false,
         "rank": 1
       },
@@ -4144,7 +4144,7 @@
         "strike": 83500,
         "side": "resistance",
         "label": "R3",
-        "total": 147.5,
+        "total": 149.8,
         "extra": false,
         "rank": 2
       },
@@ -4165,6 +4165,6 @@
         "rank": 0
       }
     ],
-    "updatedAt": "2026-10-14T19:25:23.881Z"
+    "updatedAt": "2026-10-14T22:31:09.372Z"
   }
 }
