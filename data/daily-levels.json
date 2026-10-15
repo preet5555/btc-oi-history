@@ -4056,13 +4056,13 @@
   "2026-10-14": {
     "dayStart": 1791964800,
     "expiry": "15OCT26",
-    "maxPain": 83500,
+    "maxPain": 83000,
     "combined": [
       {
         "strike": 81000,
         "side": "support",
         "label": "S3",
-        "total": 208.79999999999998,
+        "total": 210.1,
         "extra": false,
         "rank": 2
       },
@@ -4070,7 +4070,7 @@
         "strike": 81500,
         "side": "support",
         "label": "S1",
-        "total": 399,
+        "total": 398.6,
         "extra": false,
         "rank": 0
       },
@@ -4086,7 +4086,7 @@
         "strike": 83500,
         "side": "resistance",
         "label": "R4",
-        "total": 167.10000000000002,
+        "total": 164.9,
         "extra": true,
         "rank": 3
       },
@@ -4120,7 +4120,7 @@
         "strike": 81000,
         "side": "support",
         "label": "S3",
-        "total": 208.2,
+        "total": 209.5,
         "extra": false,
         "rank": 2
       },
@@ -4128,7 +4128,7 @@
         "strike": 81500,
         "side": "support",
         "label": "S1",
-        "total": 387.2,
+        "total": 386.8,
         "extra": false,
         "rank": 0
       },
@@ -4144,7 +4144,7 @@
         "strike": 83500,
         "side": "resistance",
         "label": "R3",
-        "total": 149.8,
+        "total": 147.6,
         "extra": false,
         "rank": 2
       },
@@ -4165,6 +4165,6 @@
         "rank": 0
       }
     ],
-    "updatedAt": "2026-10-14T22:31:09.372Z"
+    "updatedAt": "2026-10-15T00:54:48.471Z"
   }
 }
