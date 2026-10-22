@@ -5012,5 +5012,127 @@
       }
     ],
     "updatedAt": "2026-10-22T05:51:31.644Z"
+  },
+  "2026-10-22": {
+    "dayStart": 1792656000,
+    "expiry": "23OCT26",
+    "maxPain": 82500,
+    "combined": [
+      {
+        "strike": 76000,
+        "side": "support",
+        "label": "S3",
+        "total": 655.8,
+        "extra": false,
+        "rank": 2
+      },
+      {
+        "strike": 78000,
+        "side": "support",
+        "label": "S1",
+        "total": 2019.5,
+        "extra": false,
+        "rank": 0
+      },
+      {
+        "strike": 80000,
+        "side": "support",
+        "label": "S2",
+        "total": 972.4,
+        "extra": false,
+        "rank": 1
+      },
+      {
+        "strike": 82000,
+        "side": "resistance",
+        "label": "R2",
+        "total": 1111.1,
+        "extra": false,
+        "rank": 1
+      },
+      {
+        "strike": 83000,
+        "side": "resistance",
+        "label": "R1",
+        "total": 1164.3,
+        "extra": false,
+        "rank": 0
+      },
+      {
+        "strike": 86000,
+        "side": "resistance",
+        "label": "R3",
+        "total": 851.5,
+        "extra": false,
+        "rank": 2
+      }
+    ],
+    "individual": [
+      {
+        "strike": 76000,
+        "side": "support",
+        "label": "S3",
+        "total": 655.8,
+        "extra": false,
+        "rank": 2
+      },
+      {
+        "strike": 78000,
+        "side": "support",
+        "label": "S1",
+        "total": 2016.4,
+        "extra": false,
+        "rank": 0
+      },
+      {
+        "strike": 80000,
+        "side": "support",
+        "label": "S2",
+        "total": 879.9,
+        "extra": false,
+        "rank": 1
+      },
+      {
+        "strike": 83000,
+        "side": "resistance",
+        "label": "R5",
+        "total": 689.6,
+        "extra": true,
+        "rank": 4
+      },
+      {
+        "strike": 86000,
+        "side": "resistance",
+        "label": "R2",
+        "total": 778.5,
+        "extra": false,
+        "rank": 1
+      },
+      {
+        "strike": 87000,
+        "side": "resistance",
+        "label": "R3",
+        "total": 758.3,
+        "extra": false,
+        "rank": 2
+      },
+      {
+        "strike": 88000,
+        "side": "resistance",
+        "label": "R4",
+        "total": 744.2,
+        "extra": true,
+        "rank": 3
+      },
+      {
+        "strike": 90000,
+        "side": "resistance",
+        "label": "R1",
+        "total": 822.6,
+        "extra": false,
+        "rank": 0
+      }
+    ],
+    "updatedAt": "2026-10-22T11:22:33.090Z"
   }
 }
