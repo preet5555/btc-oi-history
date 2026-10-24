@@ -5149,10 +5149,10 @@
     "maxPain": 82000,
     "combined": [
       {
-        "strike": 80500,
+        "strike": 79000,
         "side": "support",
         "label": "S3",
-        "total": 220.9,
+        "total": 201.3,
         "extra": false,
         "rank": 2
       },
@@ -5160,7 +5160,7 @@
         "strike": 81000,
         "side": "support",
         "label": "S1",
-        "total": 333.8,
+        "total": 335.4,
         "extra": false,
         "rank": 0
       },
@@ -5168,15 +5168,23 @@
         "strike": 81500,
         "side": "support",
         "label": "S2",
-        "total": 272.8,
+        "total": 267.5,
         "extra": false,
         "rank": 1
+      },
+      {
+        "strike": 82000,
+        "side": "resistance",
+        "label": "R4",
+        "total": 124.4,
+        "extra": true,
+        "rank": 3
       },
       {
         "strike": 82500,
         "side": "resistance",
         "label": "R3",
-        "total": 129.4,
+        "total": 128.79999999999998,
         "extra": false,
         "rank": 2
       },
@@ -5201,40 +5209,40 @@
       {
         "strike": 79000,
         "side": "support",
-        "label": "S3",
-        "total": 198.5,
+        "label": "S2",
+        "total": 201.3,
         "extra": false,
-        "rank": 2
+        "rank": 1
       },
       {
         "strike": 80500,
         "side": "support",
-        "label": "S1",
-        "total": 217.8,
+        "label": "S3",
+        "total": 189.2,
         "extra": false,
-        "rank": 0
+        "rank": 2
       },
       {
         "strike": 81000,
         "side": "resistance",
         "label": "R3",
-        "total": 123.4,
+        "total": 124.4,
         "extra": false,
         "rank": 2
       },
       {
         "strike": 81000,
         "side": "support",
-        "label": "S2",
-        "total": 210.4,
+        "label": "S1",
+        "total": 211,
         "extra": false,
-        "rank": 1
+        "rank": 0
       },
       {
         "strike": 81500,
         "side": "support",
         "label": "S4",
-        "total": 182.8,
+        "total": 182.4,
         "extra": true,
         "rank": 3
       },
@@ -5255,6 +5263,6 @@
         "rank": 1
       }
     ],
-    "updatedAt": "2026-10-23T23:23:50.914Z"
+    "updatedAt": "2026-10-24T01:50:54.399Z"
   }
 }
