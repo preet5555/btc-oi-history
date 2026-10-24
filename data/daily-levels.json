@@ -5149,10 +5149,10 @@
     "maxPain": 82000,
     "combined": [
       {
-        "strike": 79000,
+        "strike": 80500,
         "side": "support",
         "label": "S3",
-        "total": 201.3,
+        "total": 206.4,
         "extra": false,
         "rank": 2
       },
@@ -5160,7 +5160,7 @@
         "strike": 81000,
         "side": "support",
         "label": "S1",
-        "total": 335.4,
+        "total": 356.4,
         "extra": false,
         "rank": 0
       },
@@ -5168,7 +5168,7 @@
         "strike": 81500,
         "side": "support",
         "label": "S2",
-        "total": 267.5,
+        "total": 264.4,
         "extra": false,
         "rank": 1
       },
@@ -5176,7 +5176,7 @@
         "strike": 82000,
         "side": "resistance",
         "label": "R4",
-        "total": 124.4,
+        "total": 124.80000000000001,
         "extra": true,
         "rank": 3
       },
@@ -5210,7 +5210,7 @@
         "strike": 79000,
         "side": "support",
         "label": "S2",
-        "total": 201.3,
+        "total": 200.4,
         "extra": false,
         "rank": 1
       },
@@ -5218,23 +5218,23 @@
         "strike": 80500,
         "side": "support",
         "label": "S3",
-        "total": 189.2,
+        "total": 186.9,
         "extra": false,
         "rank": 2
       },
       {
         "strike": 81000,
         "side": "resistance",
-        "label": "R3",
-        "total": 124.4,
+        "label": "R2",
+        "total": 145.5,
         "extra": false,
-        "rank": 2
+        "rank": 1
       },
       {
         "strike": 81000,
         "side": "support",
         "label": "S1",
-        "total": 211,
+        "total": 210.9,
         "extra": false,
         "rank": 0
       },
@@ -5242,7 +5242,7 @@
         "strike": 81500,
         "side": "support",
         "label": "S4",
-        "total": 182.4,
+        "total": 180,
         "extra": true,
         "rank": 3
       },
@@ -5257,12 +5257,12 @@
       {
         "strike": 87000,
         "side": "resistance",
-        "label": "R2",
+        "label": "R3",
         "total": 131.6,
         "extra": false,
-        "rank": 1
+        "rank": 2
       }
     ],
-    "updatedAt": "2026-10-24T01:50:54.399Z"
+    "updatedAt": "2026-10-24T06:58:43.246Z"
   }
 }
