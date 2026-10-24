@@ -5274,7 +5274,7 @@
         "strike": 79000,
         "side": "support",
         "label": "S3",
-        "total": 285.1,
+        "total": 208.7,
         "extra": false,
         "rank": 2
       },
@@ -5282,7 +5282,7 @@
         "strike": 80000,
         "side": "support",
         "label": "S2",
-        "total": 580.8,
+        "total": 579.3,
         "extra": false,
         "rank": 1
       },
@@ -5290,7 +5290,7 @@
         "strike": 81000,
         "side": "support",
         "label": "S1",
-        "total": 595.7,
+        "total": 603,
         "extra": false,
         "rank": 0
       },
@@ -5298,7 +5298,7 @@
         "strike": 81500,
         "side": "resistance",
         "label": "R1",
-        "total": 376.6,
+        "total": 376.7,
         "extra": false,
         "rank": 0
       },
@@ -5306,7 +5306,7 @@
         "strike": 82000,
         "side": "resistance",
         "label": "R2",
-        "total": 255.6,
+        "total": 255.5,
         "extra": false,
         "rank": 1
       },
@@ -5324,7 +5324,7 @@
         "strike": 79000,
         "side": "support",
         "label": "S3",
-        "total": 284.5,
+        "total": 208.1,
         "extra": false,
         "rank": 2
       },
@@ -5340,7 +5340,7 @@
         "strike": 80000,
         "side": "support",
         "label": "S1",
-        "total": 371.8,
+        "total": 370.3,
         "extra": false,
         "rank": 0
       },
@@ -5348,7 +5348,7 @@
         "strike": 81000,
         "side": "resistance",
         "label": "R3",
-        "total": 228.9,
+        "total": 236.3,
         "extra": false,
         "rank": 2
       },
@@ -5356,7 +5356,7 @@
         "strike": 81000,
         "side": "support",
         "label": "S2",
-        "total": 366.8,
+        "total": 366.7,
         "extra": false,
         "rank": 1
       },
@@ -5364,7 +5364,7 @@
         "strike": 81500,
         "side": "resistance",
         "label": "R1",
-        "total": 288.3,
+        "total": 288.7,
         "extra": false,
         "rank": 0
       },
@@ -5377,6 +5377,6 @@
         "rank": 1
       }
     ],
-    "updatedAt": "2026-10-24T15:44:23.811Z"
+    "updatedAt": "2026-10-24T18:22:51.994Z"
   }
 }
