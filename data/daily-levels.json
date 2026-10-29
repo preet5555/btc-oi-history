@@ -5828,7 +5828,7 @@
         "strike": 70000,
         "side": "support",
         "label": "S1",
-        "total": 8052.9,
+        "total": 7905.9,
         "extra": false,
         "rank": 0
       },
@@ -5836,7 +5836,7 @@
         "strike": 71000,
         "side": "support",
         "label": "S3",
-        "total": 3517.1,
+        "total": 3391.6,
         "extra": false,
         "rank": 2
       },
@@ -5844,7 +5844,7 @@
         "strike": 72000,
         "side": "support",
         "label": "S4",
-        "total": 3219.2,
+        "total": 3180,
         "extra": true,
         "rank": 3
       },
@@ -5852,7 +5852,7 @@
         "strike": 75000,
         "side": "support",
         "label": "S2",
-        "total": 4260.5,
+        "total": 4220.7,
         "extra": false,
         "rank": 1
       },
@@ -5860,7 +5860,7 @@
         "strike": 90000,
         "side": "resistance",
         "label": "R3",
-        "total": 10755.800000000001,
+        "total": 10755.6,
         "extra": false,
         "rank": 2
       },
@@ -5876,7 +5876,7 @@
         "strike": 100000,
         "side": "resistance",
         "label": "R2",
-        "total": 11285.599999999999,
+        "total": 11285.4,
         "extra": false,
         "rank": 1
       }
@@ -5901,24 +5901,24 @@
       {
         "strike": 71000,
         "side": "support",
-        "label": "S4",
+        "label": "S3",
         "total": 2577.7,
-        "extra": true,
-        "rank": 3
+        "extra": false,
+        "rank": 2
       },
       {
         "strike": 72000,
         "side": "support",
-        "label": "S3",
-        "total": 2580.6,
-        "extra": false,
-        "rank": 2
+        "label": "S4",
+        "total": 2568.9,
+        "extra": true,
+        "rank": 3
       },
       {
         "strike": 75000,
         "side": "support",
         "label": "S2",
-        "total": 2976.2,
+        "total": 2974.1,
         "extra": false,
         "rank": 1
       },
@@ -5947,6 +5947,6 @@
         "rank": 1
       }
     ],
-    "updatedAt": "2026-10-29T08:46:50.936Z"
+    "updatedAt": "2026-10-29T15:55:09.593Z"
   }
 }
