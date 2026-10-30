@@ -5952,29 +5952,29 @@
   "2026-10-30": {
     "dayStart": 1793347200,
     "expiry": "31OCT26",
-    "maxPain": 79000,
+    "maxPain": 78500,
     "combined": [
       {
         "strike": 72000,
         "side": "support",
-        "label": "S1",
+        "label": "S2",
         "total": 719.4,
         "extra": false,
-        "rank": 0
+        "rank": 1
       },
       {
         "strike": 77000,
         "side": "support",
-        "label": "S2",
-        "total": 713.9,
+        "label": "S1",
+        "total": 847,
         "extra": false,
-        "rank": 1
+        "rank": 0
       },
       {
         "strike": 78000,
         "side": "support",
         "label": "S3",
-        "total": 638.9,
+        "total": 636,
         "extra": false,
         "rank": 2
       },
@@ -6016,7 +6016,7 @@
         "strike": 77000,
         "side": "support",
         "label": "S2",
-        "total": 640.4,
+        "total": 641.4,
         "extra": false,
         "rank": 1
       },
@@ -6024,7 +6024,7 @@
         "strike": 78000,
         "side": "support",
         "label": "S3",
-        "total": 502.5,
+        "total": 501.5,
         "extra": false,
         "rank": 2
       },
@@ -6053,6 +6053,6 @@
         "rank": 2
       }
     ],
-    "updatedAt": "2026-10-30T18:52:44.348Z"
+    "updatedAt": "2026-10-30T22:50:18.154Z"
   }
 }
