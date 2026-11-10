@@ -7174,7 +7174,7 @@
   "2026-11-10": {
     "dayStart": 1794297600,
     "expiry": "11NOV26",
-    "maxPain": 75000,
+    "maxPain": 74500,
     "combined": [
       {
         "strike": 67000,
@@ -7193,36 +7193,36 @@
         "rank": 0
       },
       {
-        "strike": 74500,
+        "strike": 71000,
         "side": "support",
         "label": "S3",
-        "total": 129.8,
+        "total": 127.7,
         "extra": false,
         "rank": 2
       },
       {
-        "strike": 75000,
+        "strike": 74500,
         "side": "resistance",
         "label": "R1",
-        "total": 261.4,
+        "total": 331.20000000000005,
         "extra": false,
         "rank": 0
       },
       {
-        "strike": 75500,
+        "strike": 75000,
         "side": "resistance",
-        "label": "R3",
-        "total": 139.1,
+        "label": "R2",
+        "total": 276.3,
         "extra": false,
-        "rank": 2
+        "rank": 1
       },
       {
         "strike": 76500,
         "side": "resistance",
-        "label": "R2",
+        "label": "R3",
         "total": 226.79999999999998,
         "extra": false,
-        "rank": 1
+        "rank": 2
       }
     ],
     "individual": [
@@ -7246,7 +7246,15 @@
         "strike": 71000,
         "side": "support",
         "label": "S3",
-        "total": 127.6,
+        "total": 127.7,
+        "extra": false,
+        "rank": 2
+      },
+      {
+        "strike": 74500,
+        "side": "resistance",
+        "label": "R3",
+        "total": 207.3,
         "extra": false,
         "rank": 2
       },
@@ -7262,7 +7270,7 @@
         "strike": 75000,
         "side": "resistance",
         "label": "R1",
-        "total": 219.1,
+        "total": 234,
         "extra": false,
         "rank": 0
       },
@@ -7273,16 +7281,8 @@
         "total": 215.7,
         "extra": false,
         "rank": 1
-      },
-      {
-        "strike": 78000,
-        "side": "resistance",
-        "label": "R3",
-        "total": 122.8,
-        "extra": false,
-        "rank": 2
       }
     ],
-    "updatedAt": "2026-11-10T11:34:11.049Z"
+    "updatedAt": "2026-11-10T18:50:51.635Z"
   }
 }
