@@ -7532,13 +7532,13 @@
   "2026-11-13": {
     "dayStart": 1794556800,
     "expiry": "14NOV26",
-    "maxPain": 72000,
+    "maxPain": 71000,
     "combined": [
       {
         "strike": 68000,
         "side": "support",
         "label": "S3",
-        "total": 262.5,
+        "total": 290.8,
         "extra": false,
         "rank": 2
       },
@@ -7546,7 +7546,7 @@
         "strike": 69000,
         "side": "support",
         "label": "S1",
-        "total": 354.8,
+        "total": 412.5,
         "extra": false,
         "rank": 0
       },
@@ -7554,7 +7554,7 @@
         "strike": 70000,
         "side": "support",
         "label": "S2",
-        "total": 272,
+        "total": 308.7,
         "extra": false,
         "rank": 1
       },
@@ -7587,26 +7587,34 @@
       {
         "strike": 68000,
         "side": "support",
-        "label": "S1",
-        "total": 246.6,
+        "label": "S2",
+        "total": 249.8,
         "extra": false,
-        "rank": 0
+        "rank": 1
       },
       {
         "strike": 69000,
-        "side": "support",
-        "label": "S3",
-        "total": 244,
+        "side": "resistance",
+        "label": "R3",
+        "total": 129.9,
         "extra": false,
         "rank": 2
       },
       {
+        "strike": 69000,
+        "side": "support",
+        "label": "S1",
+        "total": 282.6,
+        "extra": false,
+        "rank": 0
+      },
+      {
         "strike": 70000,
         "side": "support",
-        "label": "S2",
-        "total": 245.9,
+        "label": "S3",
+        "total": 244.8,
         "extra": false,
-        "rank": 1
+        "rank": 2
       },
       {
         "strike": 73000,
@@ -7631,16 +7639,8 @@
         "total": 258.1,
         "extra": false,
         "rank": 1
-      },
-      {
-        "strike": 80000,
-        "side": "resistance",
-        "label": "R3",
-        "total": 124.9,
-        "extra": false,
-        "rank": 2
       }
     ],
-    "updatedAt": "2026-11-13T18:34:57.772Z"
+    "updatedAt": "2026-11-13T23:54:05.935Z"
   }
 }
