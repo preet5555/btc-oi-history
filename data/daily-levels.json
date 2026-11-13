@@ -7402,37 +7402,45 @@
   "2026-11-12": {
     "dayStart": 1794470400,
     "expiry": "13NOV26",
-    "maxPain": 76000,
+    "maxPain": 75500,
     "combined": [
+      {
+        "strike": 68000,
+        "side": "support",
+        "label": "S4",
+        "total": 1413.6,
+        "extra": true,
+        "rank": 3
+      },
       {
         "strike": 70000,
         "side": "support",
-        "label": "S2",
-        "total": 1767.9,
+        "label": "S3",
+        "total": 1669.1000000000001,
         "extra": false,
-        "rank": 1
+        "rank": 2
       },
       {
         "strike": 72000,
         "side": "support",
         "label": "S1",
-        "total": 1837.7,
+        "total": 1863,
         "extra": false,
         "rank": 0
       },
       {
         "strike": 74000,
         "side": "support",
-        "label": "S3",
-        "total": 1706.5,
+        "label": "S2",
+        "total": 1704.6,
         "extra": false,
-        "rank": 2
+        "rank": 1
       },
       {
         "strike": 76000,
         "side": "resistance",
         "label": "R3",
-        "total": 1405.5,
+        "total": 1385.6999999999998,
         "extra": false,
         "rank": 2
       },
@@ -7458,7 +7466,7 @@
         "strike": 68000,
         "side": "support",
         "label": "S3",
-        "total": 1695.8,
+        "total": 1412.6,
         "extra": false,
         "rank": 2
       },
@@ -7466,7 +7474,7 @@
         "strike": 70000,
         "side": "support",
         "label": "S2",
-        "total": 1765.7,
+        "total": 1666.9,
         "extra": false,
         "rank": 1
       },
@@ -7474,15 +7482,23 @@
         "strike": 72000,
         "side": "support",
         "label": "S1",
-        "total": 1784.4,
+        "total": 1763.7,
         "extra": false,
         "rank": 0
+      },
+      {
+        "strike": 73000,
+        "side": "support",
+        "label": "S5",
+        "total": 1026.3,
+        "extra": true,
+        "rank": 4
       },
       {
         "strike": 74000,
         "side": "support",
         "label": "S4",
-        "total": 1262.1,
+        "total": 1259.1,
         "extra": true,
         "rank": 3
       },
@@ -7511,6 +7527,6 @@
         "rank": 1
       }
     ],
-    "updatedAt": "2026-11-12T22:53:05.544Z"
+    "updatedAt": "2026-11-13T03:15:11.813Z"
   }
 }
