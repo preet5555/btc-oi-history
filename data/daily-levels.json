@@ -7634,5 +7634,135 @@
       }
     ],
     "updatedAt": "2026-11-14T05:29:49.054Z"
+  },
+  "2026-11-14": {
+    "dayStart": 1794643200,
+    "expiry": "15NOV26",
+    "maxPain": 68500,
+    "combined": [
+      {
+        "strike": 66000,
+        "side": "support",
+        "label": "S2",
+        "total": 289.4,
+        "extra": false,
+        "rank": 1
+      },
+      {
+        "strike": 67000,
+        "side": "support",
+        "label": "S1",
+        "total": 560.3,
+        "extra": false,
+        "rank": 0
+      },
+      {
+        "strike": 68000,
+        "side": "support",
+        "label": "S3",
+        "total": 284.79999999999995,
+        "extra": false,
+        "rank": 2
+      },
+      {
+        "strike": 68500,
+        "side": "resistance",
+        "label": "R1",
+        "total": 408,
+        "extra": false,
+        "rank": 0
+      },
+      {
+        "strike": 69000,
+        "side": "resistance",
+        "label": "R2",
+        "total": 381.5,
+        "extra": false,
+        "rank": 1
+      },
+      {
+        "strike": 72500,
+        "side": "resistance",
+        "label": "R3",
+        "total": 234,
+        "extra": false,
+        "rank": 2
+      }
+    ],
+    "individual": [
+      {
+        "strike": 65000,
+        "side": "support",
+        "label": "S5",
+        "total": 190.3,
+        "extra": true,
+        "rank": 4
+      },
+      {
+        "strike": 66000,
+        "side": "support",
+        "label": "S2",
+        "total": 289.4,
+        "extra": false,
+        "rank": 1
+      },
+      {
+        "strike": 67000,
+        "side": "resistance",
+        "label": "R2",
+        "total": 211.9,
+        "extra": false,
+        "rank": 1
+      },
+      {
+        "strike": 67000,
+        "side": "support",
+        "label": "S1",
+        "total": 348.4,
+        "extra": false,
+        "rank": 0
+      },
+      {
+        "strike": 68000,
+        "side": "support",
+        "label": "S3",
+        "total": 211.2,
+        "extra": false,
+        "rank": 2
+      },
+      {
+        "strike": 68500,
+        "side": "resistance",
+        "label": "R3",
+        "total": 207.4,
+        "extra": false,
+        "rank": 2
+      },
+      {
+        "strike": 68500,
+        "side": "support",
+        "label": "S4",
+        "total": 200.6,
+        "extra": true,
+        "rank": 3
+      },
+      {
+        "strike": 69000,
+        "side": "resistance",
+        "label": "R1",
+        "total": 273.1,
+        "extra": false,
+        "rank": 0
+      },
+      {
+        "strike": 72500,
+        "side": "resistance",
+        "label": "R4",
+        "total": 173.7,
+        "extra": true,
+        "rank": 3
+      }
+    ],
+    "updatedAt": "2026-11-14T12:27:11.827Z"
   }
 }
