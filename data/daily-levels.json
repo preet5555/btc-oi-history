@@ -8296,37 +8296,37 @@
   "2026-11-19": {
     "dayStart": 1795075200,
     "expiry": "20NOV26",
-    "maxPain": 71000,
+    "maxPain": 70000,
     "combined": [
       {
         "strike": 65000,
         "side": "support",
-        "label": "S3",
-        "total": 1371.5,
+        "label": "S2",
+        "total": 1395.3,
         "extra": false,
-        "rank": 2
+        "rank": 1
       },
       {
         "strike": 70000,
         "side": "support",
         "label": "S1",
-        "total": 2390,
+        "total": 2496.6,
         "extra": false,
         "rank": 0
       },
       {
         "strike": 72000,
         "side": "support",
-        "label": "S2",
-        "total": 1391,
+        "label": "S3",
+        "total": 1378.5,
         "extra": false,
-        "rank": 1
+        "rank": 2
       },
       {
         "strike": 73000,
         "side": "resistance",
         "label": "R2",
-        "total": 3375.5,
+        "total": 3375.1000000000004,
         "extra": false,
         "rank": 1
       },
@@ -8350,7 +8350,7 @@
         "strike": 77000,
         "side": "resistance",
         "label": "R4",
-        "total": 2419.9,
+        "total": 2418.5,
         "extra": true,
         "rank": 3
       }
@@ -8360,7 +8360,7 @@
         "strike": 63000,
         "side": "support",
         "label": "S5",
-        "total": 776.1,
+        "total": 778.8,
         "extra": true,
         "rank": 4
       },
@@ -8368,7 +8368,7 @@
         "strike": 64000,
         "side": "support",
         "label": "S3",
-        "total": 981.2,
+        "total": 1007.1,
         "extra": false,
         "rank": 2
       },
@@ -8376,7 +8376,7 @@
         "strike": 65000,
         "side": "support",
         "label": "S2",
-        "total": 996.4,
+        "total": 1014.9,
         "extra": false,
         "rank": 1
       },
@@ -8384,7 +8384,7 @@
         "strike": 70000,
         "side": "support",
         "label": "S1",
-        "total": 1820.1,
+        "total": 1820,
         "extra": false,
         "rank": 0
       },
@@ -8392,7 +8392,7 @@
         "strike": 72000,
         "side": "support",
         "label": "S4",
-        "total": 978.4,
+        "total": 965.9,
         "extra": true,
         "rank": 3
       },
@@ -8400,7 +8400,7 @@
         "strike": 73000,
         "side": "resistance",
         "label": "R1",
-        "total": 3187.3,
+        "total": 3189.3,
         "extra": false,
         "rank": 0
       },
@@ -8429,6 +8429,6 @@
         "rank": 3
       }
     ],
-    "updatedAt": "2026-11-19T08:48:46.860Z"
+    "updatedAt": "2026-11-19T18:01:43.584Z"
   }
 }
