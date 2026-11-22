@@ -8681,50 +8681,58 @@
     "maxPain": 60000,
     "combined": [
       {
-        "strike": 58000,
+        "strike": 55000,
         "side": "support",
         "label": "S2",
-        "total": 265,
+        "total": 267.5,
         "extra": false,
         "rank": 1
       },
       {
+        "strike": 58000,
+        "side": "support",
+        "label": "S1",
+        "total": 278.7,
+        "extra": false,
+        "rank": 0
+      },
+      {
         "strike": 58500,
         "side": "support",
-        "label": "S3",
-        "total": 240.5,
-        "extra": false,
-        "rank": 2
+        "label": "S4",
+        "total": 242.4,
+        "extra": true,
+        "rank": 3
       },
       {
         "strike": 59000,
         "side": "support",
-        "label": "S4",
-        "total": 231.70000000000002,
-        "extra": true,
-        "rank": 3
+        "label": "S3",
+        "total": 260,
+        "extra": false,
+        "rank": 2
       },
       {
         "strike": 60000,
         "side": "resistance",
         "label": "R1",
-        "total": 608.6,
+        "total": 555.5,
         "extra": false,
         "rank": 0
       },
       {
         "strike": 61500,
         "side": "support",
-        "label": "S1",
-        "total": 336,
-        "extra": false,
-        "rank": 0
+        "label": "S5",
+        "total": 241.8,
+        "extra": true,
+        "rank": 4
       },
       {
         "strike": 62000,
         "side": "resistance",
         "label": "R3",
-        "total": 276.1,
+        "total": 292.4,
         "extra": false,
         "rank": 2
       },
@@ -8732,25 +8740,41 @@
         "strike": 63000,
         "side": "resistance",
         "label": "R2",
-        "total": 303.6,
+        "total": 309.1,
         "extra": false,
         "rank": 1
       }
     ],
     "individual": [
       {
+        "strike": 55000,
+        "side": "support",
+        "label": "S1",
+        "total": 266.6,
+        "extra": false,
+        "rank": 0
+      },
+      {
+        "strike": 56000,
+        "side": "support",
+        "label": "S5",
+        "total": 200.3,
+        "extra": true,
+        "rank": 4
+      },
+      {
         "strike": 58000,
         "side": "support",
-        "label": "S3",
-        "total": 241.6,
+        "label": "S2",
+        "total": 255.3,
         "extra": false,
-        "rank": 2
+        "rank": 1
       },
       {
         "strike": 58500,
         "side": "support",
         "label": "S4",
-        "total": 209.2,
+        "total": 211.1,
         "extra": true,
         "rank": 3
       },
@@ -8758,51 +8782,51 @@
         "strike": 60000,
         "side": "resistance",
         "label": "R1",
-        "total": 340.1,
+        "total": 342.2,
         "extra": false,
         "rank": 0
       },
       {
         "strike": 60000,
         "side": "support",
-        "label": "S2",
-        "total": 268.5,
+        "label": "S3",
+        "total": 213.3,
         "extra": false,
-        "rank": 1
-      },
-      {
-        "strike": 61500,
-        "side": "support",
-        "label": "S1",
-        "total": 301.9,
-        "extra": false,
-        "rank": 0
+        "rank": 2
       },
       {
         "strike": 62000,
         "side": "resistance",
-        "label": "R4",
-        "total": 153.2,
+        "label": "R5",
+        "total": 169,
         "extra": true,
-        "rank": 3
+        "rank": 4
       },
       {
         "strike": 63000,
         "side": "resistance",
         "label": "R2",
-        "total": 294.8,
+        "total": 300.3,
         "extra": false,
         "rank": 1
       },
       {
         "strike": 63500,
         "side": "resistance",
+        "label": "R4",
+        "total": 171.6,
+        "extra": true,
+        "rank": 3
+      },
+      {
+        "strike": 64000,
+        "side": "resistance",
         "label": "R3",
-        "total": 153.6,
+        "total": 177.5,
         "extra": false,
         "rank": 2
       }
     ],
-    "updatedAt": "2026-11-22T14:36:28.057Z"
+    "updatedAt": "2026-11-22T20:50:02.361Z"
   }
 }
